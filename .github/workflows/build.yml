@@ -404,10 +404,10 @@ jobs:
           echo "OPENCV_VERSION_SHORT=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=opencv.version.short -q -DforceStdout)" >> $GITHUB_ENV
 
       - name: Download Windows Distribution
-        run: wget -O opencv-${{ env.OPENCV_VERSION }}.tar.gz "https://sourceforge.net/projects/opencvlibrary/files/${{ env.OPENCV_VERSION }}/OpenCV ${{ env.OPENCV_VERSION }}.tar.gz/download"
+        run: wget -O opencv-${{ env.OPENCV_VERSION }}.zip "https://sourceforge.net/projects/opencvlibrary/files/${{ env.OPENCV_VERSION }}/OpenCV ${{ env.OPENCV_VERSION }}.zip/download"
 
       - name: Extract Windows Distribution
-        run: 7z x opencv-${{ env.OPENCV_VERSION }}.tar.gz
+        run: 7z x opencv-${{ env.OPENCV_VERSION }}.zip
           
       - name: Upload Libraries
         uses: actions/upload-artifact@v2
