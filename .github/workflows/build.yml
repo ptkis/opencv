@@ -325,7 +325,7 @@ jobs:
     strategy:
       matrix:
         java: [18]
-    runs-on: [self-hosted, macOS, ARM64, macOS-ARM64]
+    runs-on: [self-hosted, macOS, ARM64]
 
     steps:
       - name: Checkout Repo
