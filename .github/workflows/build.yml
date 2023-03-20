@@ -96,7 +96,6 @@ jobs:
               -D BUILD_opencv_python3=OFF \
               -D BUILD_opencv_apps=OFF \
               -D BUILD_opencv_gapi=OFF \
-              -D WITH_1394=OFF \
               -D CMAKE_BUILD_TYPE=RELEASE \
               ..
             make -j4
@@ -209,7 +208,6 @@ jobs:
               -D BUILD_opencv_python3=OFF \
               -D BUILD_opencv_apps=OFF \
               -D BUILD_opencv_gapi=OFF \
-              -D WITH_1394=OFF \
               -D CMAKE_BUILD_TYPE=RELEASE \
               ..
             make -j4
@@ -302,7 +300,6 @@ jobs:
             -D BUILD_opencv_python3=OFF \
             -D BUILD_opencv_apps=OFF \
             -D BUILD_opencv_gapi=OFF \
-            -D WITH_1394=OFF \
             -D CMAKE_BUILD_TYPE=RELEASE \
             ..
           make -j8
@@ -378,7 +375,6 @@ jobs:
             -D BUILD_opencv_python3=OFF \
             -D BUILD_opencv_apps=OFF \
             -D BUILD_opencv_gapi=OFF \
-            -D WITH_1394=OFF \
             -D CMAKE_BUILD_TYPE=RELEASE \
             -D CMAKE_APPLE_SILICON_PROCESSOR=arm64 \
             -D CMAKE_CXX_STANDARD=17 \
