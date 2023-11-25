@@ -277,6 +277,11 @@ jobs:
             --enable-libx265 \
             --enable-libvpx \
             --enable-zlib \
+            --enable-indev=alsa \
+            --enable-outdev=alsa \
+            --enable-hwaccel=h264_vaapi \
+            --enable-hwaccel=h264_vdpau \
+            --enable-nonfree \
             --prefix=${{ github.workspace }}/ffmpeg_build
           make -j8
           make install
