@@ -266,7 +266,15 @@ jobs:
           wget https://ffmpeg.org/releases/ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}.tar.bz2
           tar xjvf ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}.tar.bz2
           cd ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}
-          ./configure --enable-shared --prefix=${{ github.workspace }}/ffmpeg_build
+          ./configure \
+            --enable-shared \
+            --enable-gpl \
+            --enable-libx264 \
+            --enable-libx265 \
+            --enable-libvpx \
+            --enable-zlib \
+            --prefix=${{ github.workspace }}/ffmpeg_build \
+            ..
           make -j8
           make install
 
