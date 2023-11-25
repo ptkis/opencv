@@ -261,9 +261,9 @@ jobs:
           echo "OPENCV_VERSION_SHORT=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=opencv.version.short -q -DforceStdout)" >> $GITHUB_ENV
           echo "FFMPEG_VERSION_SHORT=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=ffmpeg.version.short -q -DforceStdout)" >> $GITHUB_ENV
 
-      - name: Install/Update nasm and yasm
+      - name: Install/Update nasm and yasm and codec libraries
         run: |
-          sudo apt-get install -y nasm yasm
+          sudo apt-get install -y nasm yasm libx264-dev libx265-dev libvpx-dev zlib1g-dev
 
       - name: Build ffmpeg
         run: |
