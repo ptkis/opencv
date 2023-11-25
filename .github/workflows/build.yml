@@ -283,6 +283,7 @@ jobs:
             -D BUILD_opencv_apps=OFF \
             -D BUILD_opencv_gapi=OFF \
             -D CMAKE_BUILD_TYPE=RELEASE \
+            -D WITH_FFMPEG=ON \
             ..
           make -j8
 
