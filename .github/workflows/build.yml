@@ -16,9 +16,11 @@ name: Build OpenPnP OpenCV Distribution
 on: 
   push:
   pull_request:
-
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  build_linux_arm: 
+  build_linux_arm:
     strategy:
       matrix:
         os: [ubuntu-18.04]
