@@ -271,7 +271,10 @@ jobs:
           tar xjvf ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}.tar.bz2
           cd ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}
           ./configure \
-            --enable-shared \
+            --disable-shared \
+            --disable-doc \
+            --disable-programs \
+            --enable-static \
             --enable-gpl \
             --enable-libx264 \
             --enable-libx265 \
