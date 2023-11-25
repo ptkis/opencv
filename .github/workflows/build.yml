@@ -277,8 +277,7 @@ jobs:
             --enable-libx265 \
             --enable-libvpx \
             --enable-zlib \
-            --prefix=${{ github.workspace }}/ffmpeg_build \
-            ..
+            --prefix=${{ github.workspace }}/ffmpeg_build
           make -j8
           make install
 
