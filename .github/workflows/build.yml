@@ -21,6 +21,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build_linux_arm:
+    if: false
     strategy:
       matrix:
         os: [ubuntu-18.04]
@@ -126,7 +127,8 @@ jobs:
 
 
 
-  build_linux_arm64: 
+  build_linux_arm64:
+    if: false
     strategy:
       matrix:
         os: [ubuntu-18.04]
@@ -237,7 +239,8 @@ jobs:
   build_mac_linux_x64:
     strategy:
       matrix:
-        os: [ubuntu-18.04, macos-10.15]
+#        os: [ubuntu-18.04, macos-10.15]
+        os: [ubuntu-18.04]
         java: [8]
 
     runs-on: ${{ matrix.os }}
@@ -310,6 +313,7 @@ jobs:
   # yet support runners for Apple Silicon on macOS. 
   # Requires that the runner machine have, at least, maven and ant installed.
   build_mac_aarch64:
+    if: false
     strategy:
       matrix:
         java: [18]
