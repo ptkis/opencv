@@ -16,6 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <opencv.version.long>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</opencv.version.long>
     <opencv.version.short>${parsedVersion.majorVersion}${parsedVersion.minorVersion}${parsedVersion.incrementalVersion}</opencv.version.short>
+    <ffmpeg.version.short>6.1</ffmpeg.version.short>
   </properties>
 
   <profiles>

@@ -259,12 +259,16 @@ jobs:
           echo "POM_VERSION=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
           echo "OPENCV_VERSION=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=opencv.version.long -q -DforceStdout)" >> $GITHUB_ENV
           echo "OPENCV_VERSION_SHORT=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=opencv.version.short -q -DforceStdout)" >> $GITHUB_ENV
+          echo "FFMPEG_VERSION_SHORT=$(mvn build-helper:parse-version org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=ffmpeg.version.short -q -DforceStdout)" >> $GITHUB_ENV
 
-      - name: Install FFmpeg on ubuntu
-        if: matrix.os == 'ubuntu-18.04'
+      - name: Build ffmpeg
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libavcodec-dev libavformat-dev libavutil-dev
+          wget https://ffmpeg.org/releases/ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}.tar.bz2
+          tar xjvf ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}.tar.bz2
+          cd ffmpeg-${{ env.FFMPEG_VERSION_SHORT }}
+          ./configure --enable-shared --prefix=${{ github.workspace }}/ffmpeg_build
+          make -j8
+          make install
 
       - name: Build OpenCV
         run: |
@@ -273,6 +277,8 @@ jobs:
           cd opencv-${{ env.OPENCV_VERSION }}
           mkdir build
           cd build
+          PKG_CONFIG_PATH=${{ github.workspace }}/ffmpeg_build/lib/pkgconfig:${PKG_CONFIG_PATH}
+          export PKG_CONFIG_PATH
           cmake \
             -D OPENCV_FORCE_3RDPARTY_BUILD=ON \
             -D BUILD_JAVA=ON \
@@ -290,6 +296,8 @@ jobs:
             -D BUILD_opencv_gapi=OFF \
             -D CMAKE_BUILD_TYPE=RELEASE \
             -D WITH_FFMPEG=ON \
+            -D FFMPEG_INCLUDE_DIR=${{ github.workspace }}/ffmpeg_build/include \
+            -D FFMPEG_LIB_DIR=${{ github.workspace }}/ffmpeg_build/lib \
             ..
           make -j8
 
