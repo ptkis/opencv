@@ -45,7 +45,7 @@ jobs:
         uses: uraimo/run-on-arch-action@v2.0.9
         with:
           arch: armv7
-          distro: ubuntu22.04
+          distro: ubuntu18.04
           
            # Not required, but speeds up builds
           githubToken: ${{ github.token }}
@@ -151,7 +151,7 @@ jobs:
         uses: uraimo/run-on-arch-action@v2.0.9
         with:
           arch: aarch64
-          distro: ubuntu22.04
+          distro: ubuntu18.04
           
            # Not required, but speeds up builds
           githubToken: ${{ github.token }}
